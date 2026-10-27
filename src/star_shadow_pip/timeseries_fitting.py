@@ -118,7 +118,7 @@ def objective_sinusoids(params, times, signal, i_sectors):
     model_sinusoid = tsf.sum_sines(times, freqs, ampls, phases)
     # calculate the likelihood (minus this for minimisation)
     resid = signal - model_linear - model_sinusoid
-    ln_likelihood = tsf.calc_likelihood(resid, times=times, signal_err=None, iid=True)
+    ln_likelihood = tsf.calc_iid_normal_likelihood(resid)
     return -ln_likelihood
 
 
